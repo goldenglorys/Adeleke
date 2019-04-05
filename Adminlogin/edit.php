@@ -14,11 +14,12 @@ $home = $_POST['Home_Address'];
 $email = $_POST['Email_Address'];
 $student = $_POST['Student_Phone_No'];
 $parent = $_POST['Parent_Phone_No'];
+$room = $_POST['Room_NO'];
 
 
-$update = mysqli_query($con, "UPDATE student_info_db SET Name='$name',Course = '$course',Matric_No= '$matircno',D_O_B = '$dob',Religion_Denomination='$religion',Home_Address='$home',Email_Address='$email',Student_Phone_No='$student',Parent_Phone_No='$parent' WHERE student_info = '$id'");
+$update = mysqli_query($con, "UPDATE student_info_db SET Name='$name',Course = '$course',Matric_No= '$matircno',D_O_B = '$dob',Religion_Denomination='$religion',Home_Address='$home',Email_Address='$email',Student_Phone_No='$student',Parent_Phone_No='$parent',Room_NO='$room' WHERE student_info = '$id'");
 if($update){
-	include("come.php");
+header('location:come.php');
 	}else{
 	echo mysqli_error($con);
 	}
@@ -61,6 +62,9 @@ while($row=mysqli_fetch_array($select)){
 
 							<label>Parent_Phone_No:</label>
 							<input type="text" name="Parent_Phone_No"  required="true" value= <?php echo $row['Parent_Phone_No'];  ?> ><br>
+
+							<label>Room-no:</label>
+							<input type="text" name="Room_NO"  required="true" value= <?php echo $row['Room_NO'];  ?> ><br>
 									
 							<button class="btn btn-sm" name="sub" type="submit">Update</button>
 
